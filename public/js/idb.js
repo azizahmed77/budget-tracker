@@ -16,10 +16,9 @@ request.onsuccess = function(event) {
     // when db is successfully created with its object store (from onupgradedneeded event above) or simply established a connection, save reference to db in global variable
     db = event.target.result;
   
-    // check if app is online, if yes run uploadPizza() function to send all local db data to api
+    // check if app is online, if yes run uploadTransaction() function to send all local db data to api
     if (navigator.onLine) {
-      // we haven't created this yet, but we will soon, so let's comment it out for now
-       addTransaction();
+       uploadTransaction();
     }
 };
 
@@ -54,7 +53,7 @@ function uploadTransaction() {
     getAll.onsuccess = function () {
         // if there was data in indexedDb's store, let's send it to the api server
         if (getAll.result.length > 0) {
-            fetch('/api/transactions', {
+            fetch('/api/transaction', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),
                 headers: {
@@ -69,8 +68,8 @@ function uploadTransaction() {
                     }
                     // open one more transaction
                     const transaction = db.transaction(['transactions'], 'readwrite');
-                    // access the new_pizza object store
-                    const budgetTrackerObjectStore = transaction.objectStore('new_pizza');
+                    // access the object store
+                    const budgetTrackerObjectStore = transaction.objectStore('transactions');
                     // clear all items in your store
                    budgetTrackerObjectStore.clear();
 
