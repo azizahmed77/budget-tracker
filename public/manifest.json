@@ -1,4 +1,4 @@
-
+{ 
 "name": "Budget-Tracker",
 "short_name": "finances",
 "icons": [
@@ -47,3 +47,4 @@
 "background_color": "##01579b",
 "start_url": ".",
 "display": "standalone"
+}
