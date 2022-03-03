@@ -18,6 +18,8 @@ A Budget Tracker application that allows users to add expenses and deposits to t
 - JavaScript       
 - CSS
 - Node
+- Express
+- MongoDB
 - PWA
 
 
